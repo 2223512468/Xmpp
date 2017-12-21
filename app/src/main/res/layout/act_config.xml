@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/preview_view_height"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="完善基本信息"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/ok"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_25"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_20"
+            android:background="@drawable/btn_login"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dp_14" />
+
+    </RelativeLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/header"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/actionbar"
+        android:layout_margin="@dimen/dp_20"
+        android:src="@drawable/ic_head00" />
+
+
+    <Button
+        android:id="@+id/headChange"
+        android:layout_width="@dimen/preview_view_height"
+        android:layout_height="@dimen/dp_30"
+        android:layout_alignBottom="@id/header"
+        android:layout_toRightOf="@id/header"
+        android:background="@drawable/btn_login"
+        android:text="更换头像"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dp_14" />
+
+    <EditText
+        android:id="@+id/edit_user_nickName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:background="@drawable/edit_safa"
+        android:hint="@string/input_user_nickname"
+        android:minHeight="@dimen/dp_30"
+        android:paddingLeft="@dimen/dp_5"
+        android:textColorHint="@color/text_gray"
+        android:textSize="@dimen/dp_14" />
+
+    <EditText
+        android:id="@+id/edit_user_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_user_nickName"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/edit_safa"
+        android:hint="@string/input_user_sign"
+        android:minHeight="100dp"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingTop="@dimen/dp_5"
+        android:textColorHint="@color/text_gray"
+        android:textSize="@dimen/dp_14" />
+
+</RelativeLayout>

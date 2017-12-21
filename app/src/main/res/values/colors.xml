@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="grag_by">#F7F7F7</color>
+    <color name="white">#ffffff</color>
+    <color name="text_black">#323232</color>
+    <color name="text_gray">#969696</color>
+    <color name="by_gray">#DADADA</color>
+    <color name="orange_user">#F02800</color>
+    <color name="text_black_light">#9c9c9c</color>
+    <color name="theme_bg">#F5F5F9</color>
+
+</resources>
