@@ -18,6 +18,7 @@
         <activity android:name=".act.ConfigAct" />
         <activity android:name=".act.HeadSelectAct" />
         <activity android:name=".act.SearchAct" />
+        <activity android:name=".act.ChatAct" />
         <activity
             android:name=".act.AddUserAct"
             android:theme="@style/noActionBar" />
@@ -27,6 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".service.CoreSerice" />
 
     </application>
 
