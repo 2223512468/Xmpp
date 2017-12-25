@@ -7,7 +7,7 @@
     android:padding="@dimen/dp_10">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.jaja.home.xmpp.widget.CircleImageView
         android:id="@+id/search_head_img"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -35,12 +35,6 @@
         android:layout_toRightOf="@id/search_head_img"
         android:textColor="@color/text_gray"
         android:textSize="@dimen/dp_14" />
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/theme_bg" />
 
 
 </RelativeLayout>
