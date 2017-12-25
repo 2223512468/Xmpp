@@ -81,4 +81,9 @@ public class StringUtil {
             return false;
         }
     }
+
+    public static String splitStr(String str) {
+        return str.split("@")[0];
+    }
+
 }

@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jaja.home.xmpp.R;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.entity.UserEntity;
 import com.jaja.home.xmpp.util.Contants;
 import com.jaja.home.xmpp.util.SharedUtil;

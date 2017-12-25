@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jaja.home.xmpp.R;
+import com.jaja.home.xmpp.base.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -16,7 +17,6 @@ import butterknife.OnClick;
  * Created by ${Terry} on 2017/12/21.
  */
 public class AddUserAct extends BaseActivity {
-
 
     @BindView(R.id.tabLayout)
     TabLayout mTabLayout;
@@ -35,9 +35,9 @@ public class AddUserAct extends BaseActivity {
     @Override
     protected void initEvent() {
 
-        mTabLayout.addTab(mTabLayout.newTab().setText("找人"));
+      /*  mTabLayout.addTab(mTabLayout.newTab().setText("找人"));
         mTabLayout.addTab(mTabLayout.newTab().setText("找群"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("找公众号"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("找公众号"));*/
 
     }
 

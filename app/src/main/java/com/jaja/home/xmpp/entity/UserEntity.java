@@ -1,15 +1,26 @@
 package com.jaja.home.xmpp.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by ${Terry} on 2017/12/19.
  * 当前用户信息实体类
  */
-public class UserEntity {
+public class UserEntity implements Serializable{
 
     private String nickName;
     private String signature;
     private String head;
     private String userName;
+    private Boolean isOnLine;
+
+    public Boolean getOnLine() {
+        return isOnLine;
+    }
+
+    public void setOnLine(Boolean onLine) {
+        isOnLine = onLine;
+    }
 
     public String getUserName() {
         return userName;

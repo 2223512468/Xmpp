@@ -5,6 +5,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.jaja.home.xmpp.R;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.entity.RegisterUser;
 import com.jaja.home.xmpp.util.StringUtil;
 import com.jaja.home.xmpp.util.xmpp.XmppUtils;

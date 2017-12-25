@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.jaja.home.xmpp.R;
 import com.jaja.home.xmpp.adapter.SearchResultAdapter;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.entity.UserEntity;
 import com.jaja.home.xmpp.util.StringUtil;
 import com.jaja.home.xmpp.util.xmpp.XmppUtils;

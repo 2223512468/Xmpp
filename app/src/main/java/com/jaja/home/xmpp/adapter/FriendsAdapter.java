@@ -1,7 +1,9 @@
 package com.jaja.home.xmpp.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +12,13 @@ import android.widget.TextView;
 
 import com.jaja.home.xmpp.R;
 import com.jaja.home.xmpp.entity.GroupEntity;
+import com.jaja.home.xmpp.entity.UserEntity;
+import com.jaja.home.xmpp.widget.CircleImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by ${Terry} on 2017/12/21.
@@ -32,6 +35,7 @@ public class FriendsAdapter extends BaseExpandableListAdapter {
 
     public void setData(List<GroupEntity> dataList) {
         this.dataList = dataList;
+        notifyDataSetChanged();
     }
 
 
@@ -66,6 +70,17 @@ public class FriendsAdapter extends BaseExpandableListAdapter {
     }
 
 
+    public int getOnLineFriendCount(List<UserEntity> userList) {
+        int count = 0;
+        for (UserEntity user : userList) {
+            if (user.getOnLine()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
     @Override
     public View getGroupView(int groupPosition, boolean isExpand, View convertView, ViewGroup viewGroup) {
         GroupViewHolder groupViewHolder = null;
@@ -83,12 +98,16 @@ public class FriendsAdapter extends BaseExpandableListAdapter {
         groupViewHolder.groupName.setText(dataList.get(groupPosition).getGroupName());
         groupViewHolder.groupCount.setText(getChildrenCount(groupPosition) + "");
 
+        int onLineCount = getOnLineFriendCount(dataList.get(groupPosition).getFriends());
+        groupViewHolder.groupOffLine.setText(onLineCount + "");
+
         return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isExpand, View convertView, ViewGroup viewGroup) {
         ChildViewHolder childViewHolder = null;
+        UserEntity userEntity = dataList.get(groupPosition).getFriends().get(childPosition);
         if (convertView != null) {
             childViewHolder = (ChildViewHolder) convertView.getTag();
         } else {
@@ -100,11 +119,18 @@ public class FriendsAdapter extends BaseExpandableListAdapter {
             convertView.setTag(childViewHolder);
         }
 
-        String str = dataList.get(groupPosition).getFriends().get(childPosition).getHead();
-        childViewHolder.nickName.setText(dataList.get(groupPosition).getFriends().get(childPosition).getNickName());
-        childViewHolder.sign.setText(dataList.get(groupPosition).getFriends().get(childPosition).getSignature());
+        String str = userEntity.getHead();
+        childViewHolder.nickName.setText(userEntity.getNickName());
+        childViewHolder.sign.setText(userEntity.getSignature());
         try {
-            childViewHolder.circleImageView.setImageBitmap(BitmapFactory.decodeStream(mContext.getAssets().open("head/" + str)));
+            Bitmap headBit = BitmapFactory.decodeStream(mContext.getAssets().open("head/" + str));
+            childViewHolder.circleImageView.setImageBitmap(headBit);
+            Log.i("print", "--->" + userEntity.getOnLine());
+            if (userEntity.getOnLine()) {
+                childViewHolder.circleImageView.setGray(false);
+            } else {
+                childViewHolder.circleImageView.setGray(true);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

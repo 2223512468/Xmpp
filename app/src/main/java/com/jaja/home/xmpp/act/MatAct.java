@@ -2,13 +2,16 @@ package com.jaja.home.xmpp.act;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jaja.home.xmpp.R;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.frag.ContantFrag;
 import com.jaja.home.xmpp.frag.MsgFragment;
 import com.jaja.home.xmpp.frag.SetFragment;
@@ -18,6 +21,7 @@ import com.jaja.home.xmpp.widget.commontablayout.CommonTabLayout;
 import com.jaja.home.xmpp.widget.commontablayout.CustomTabEntity;
 import com.jaja.home.xmpp.widget.commontablayout.OnTabSelectListener;
 import com.jaja.home.xmpp.widget.commontablayout.TabEntity;
+import com.jaja.home.xmpp.widget.drawerlayout.DrawerLayout;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +30,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MatAct extends BaseActivity {
+public class MatAct extends BaseActivity implements DrawerLayout.DrawerListener {
 
     @BindView(R.id.headImv)
     CircleImageView headImv;
@@ -38,6 +42,10 @@ public class MatAct extends BaseActivity {
     TextView titleName;
     @BindView(R.id.add)
     TextView addTv;
+    @BindView(R.id.drawerlayout)
+    DrawerLayout drawerLayout;
+    @BindView(R.id.main_layout)
+    RelativeLayout mainLayout;
 
 
     @Override
@@ -57,6 +65,9 @@ public class MatAct extends BaseActivity {
         }
 
         initFragment();
+        drawerLayout.setDrawerListener(this);
+        drawerLayout.setScrimColor(Color.TRANSPARENT);
+        drawerLayout.isFullSize(true);
 
     }
 
@@ -129,4 +140,42 @@ public class MatAct extends BaseActivity {
         return mTabEntities;
     }
 
+    private float minScale = 0.8f;
+
+    /**
+     * 侧边菜单对像
+     *
+     * @param drawerView
+     * @param slideOffset
+     */
+    @Override
+    public void onDrawerSlide(View drawerView, float slideOffset) {
+        mainLayout.setScaleY(1 - (1 - minScale) * slideOffset);
+        mainLayout.setScaleX(1 - (1 - minScale) * slideOffset);
+
+        int size = (int) (((1 - minScale) * slideOffset) / 2 * mainLayout.getWidth());
+        mainLayout.setX(drawerView.getWidth() * slideOffset - size);
+
+        //放大菜单
+        drawerView.setScaleX(minScale + (1 - minScale) * slideOffset);
+        drawerView.setScaleY(minScale + (1 - minScale) * slideOffset);
+
+        //头像
+        headImv.setAlpha(1 - slideOffset);
+    }
+
+    @Override
+    public void onDrawerOpened(View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerClosed(View drawerView) {
+
+    }
+
+    @Override
+    public void onDrawerStateChanged(int newState) {
+
+    }
 }

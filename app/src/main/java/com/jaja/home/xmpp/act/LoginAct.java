@@ -1,5 +1,6 @@
 package com.jaja.home.xmpp.act;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.View;
@@ -9,8 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jaja.home.xmpp.R;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.entity.RegisterUser;
 import com.jaja.home.xmpp.entity.UserEntity;
+import com.jaja.home.xmpp.service.CoreSerice;
 import com.jaja.home.xmpp.util.Contants;
 import com.jaja.home.xmpp.util.SharedUtil;
 import com.jaja.home.xmpp.util.StringUtil;
@@ -51,7 +54,7 @@ public class LoginAct extends BaseActivity {
     @Override
     protected void initEvent() {
 
-
+        startService(new Intent(mContext, CoreSerice.class));
         EventBus.getDefault().register(this);
         String username = SharedUtil.getString(Contants.USERNAME);
         String password = SharedUtil.getString(Contants.PASSWORD);

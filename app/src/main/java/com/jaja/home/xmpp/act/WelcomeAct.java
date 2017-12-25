@@ -4,6 +4,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.jaja.home.xmpp.R;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.util.XmppConnectionUtils;
 
 import butterknife.BindView;

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.jaja.home.xmpp.R;
 import com.jaja.home.xmpp.adapter.HeaderAdapter;
+import com.jaja.home.xmpp.base.BaseActivity;
 import com.jaja.home.xmpp.util.StringUtil;
 
 import org.greenrobot.eventbus.EventBus;
