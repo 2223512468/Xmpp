@@ -129,11 +129,11 @@ public class MatAct extends BaseActivity implements DrawerLayout.DrawerListener 
     private ArrayList<CustomTabEntity> genTabEntity() {
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
         int[] mIconUnselectIds = {
-                R.drawable.em_conversation_normal, R.drawable.em_contact_list_normal,
-                R.drawable.em_settings_normal};
+                R.drawable.ic_small_essay, R.drawable.ic_small_item,
+                R.drawable.ic_small_set};
         int[] mIconSelectIds = {
-                R.drawable.em_conversation_selected, R.drawable.em_contact_list_selected,
-                R.drawable.em_settings_selected};
+                R.drawable.ic_small_essay, R.drawable.ic_small_item,
+                R.drawable.ic_small_set};
         for (int i = 0; i < mIconUnselectIds.length; i++) {
             mTabEntities.add(new TabEntity("", mIconSelectIds[i], mIconUnselectIds[i]));
         }

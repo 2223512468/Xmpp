@@ -12,13 +12,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".act.MatAct" />
+        <activity
+            android:name=".act.MatAct"
+            android:theme="@style/A2A" />
         <activity android:name=".act.LoginAct" />
         <activity android:name=".act.RegisterAct" />
         <activity android:name=".act.ConfigAct" />
         <activity android:name=".act.HeadSelectAct" />
         <activity android:name=".act.SearchAct" />
         <activity android:name=".act.ChatAct" />
+        <activity
+            android:name=".act.GroupManAct"
+            android:theme="@style/A2A" />
         <activity
             android:name=".act.AddUserAct"
             android:theme="@style/noActionBar" />

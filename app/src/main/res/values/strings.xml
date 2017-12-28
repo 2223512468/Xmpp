@@ -11,5 +11,5 @@
     <string name="input_pwd_again">请重新输入密码</string>
     <string name="input_user_sign">请输入用户签名</string>
     <string name="input_user_nickname">请输入昵称</string>
-
+    <string name="loading_more">正在获取更多</string>
 </resources>

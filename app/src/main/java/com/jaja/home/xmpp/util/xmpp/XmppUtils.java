@@ -8,6 +8,8 @@ import com.jaja.home.xmpp.util.Contants;
 import com.jaja.home.xmpp.util.StringUtil;
 import com.jaja.home.xmpp.util.XmppConnectionUtils;
 
+import org.jivesoftware.smack.Chat;
+import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.PacketCollector;
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.RosterEntry;
@@ -29,8 +31,10 @@ import org.jivesoftware.smackx.search.UserSearchManager;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ${Terry} on 2017/12/19.
@@ -133,6 +137,14 @@ public class XmppUtils {
                     userEntity.setSignature(vCard.getField(Contants.SIGNATURE));
                     userEntity.setHead(vCard.getField(Contants.HEADER));
                     userEntity.setUserName(user);
+
+                    //判断当前好友是否在线
+                    if (isOnLine(user)) {
+                        userEntity.setOnLine(true);
+                    } else {
+                        userEntity.setOnLine(false);
+                    }
+
                     return userEntity;
                 }
             } catch (XMPPException e) {
@@ -245,5 +257,49 @@ public class XmppUtils {
             }
         }
         return groupList;
+    }
+
+    /**
+     * 判断用户是否在线
+     *
+     * @param username
+     * @return
+     */
+    public static Boolean isOnLine(String username) {
+        XMPPConnection xmppConnection = XmppConnectionUtils.getXmppConnection();
+        if (xmppConnection != null && xmppConnection.isAuthenticated()) {
+            Roster roster = xmppConnection.getRoster();
+            Presence presence = roster.getPresence(username + "@" + xmppConnection.getServiceName());
+            return presence.isAvailable();
+        }
+        return false;
+    }
+
+
+    /**
+     * 获取或创建聊天窗口
+     *
+     * @param friend 好友名
+     * @param listenter 聊天監聽器
+     * @return
+     */
+    private static Map<String, Chat> chatManage = new HashMap<String, Chat>();// 聊天窗口管理map集合
+
+    public static Chat getFriendChat(String friend, MessageListener listenter) {
+        XMPPConnection xmppConnection = XmppConnectionUtils.getXmppConnection();
+        if (xmppConnection != null && xmppConnection.isAuthenticated()) {
+            /** 判断是否创建聊天窗口 */
+            for (String fristr : chatManage.keySet()) {
+                if (fristr.equals(friend)) {
+                    return chatManage.get(fristr);
+                }
+            }
+            /** 创建聊天窗口 */
+            Chat chat = xmppConnection.getChatManager().createChat(friend + "@" +
+                    xmppConnection.getServiceName(), listenter);
+            chatManage.put(friend, chat);
+            return chat;
+        }
+        return null;
     }
 }

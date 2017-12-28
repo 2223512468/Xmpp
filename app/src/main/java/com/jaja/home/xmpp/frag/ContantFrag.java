@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
 import com.jaja.home.xmpp.R;
@@ -14,6 +15,7 @@ import com.jaja.home.xmpp.adapter.FriendsAdapter;
 import com.jaja.home.xmpp.base.BaseFragment;
 import com.jaja.home.xmpp.entity.GroupEntity;
 import com.jaja.home.xmpp.entity.UserEntity;
+import com.jaja.home.xmpp.pop.PopShare;
 import com.jaja.home.xmpp.util.Contants;
 import com.jaja.home.xmpp.util.StringUtil;
 import com.jaja.home.xmpp.util.xmpp.XmppUtils;
@@ -25,11 +27,12 @@ import butterknife.BindView;
 /**
  * Created by ${Terry} on 2017/12/20.
  */
-public class ContantFrag extends BaseFragment implements ExpandableListView.OnChildClickListener {
+public class ContantFrag extends BaseFragment implements ExpandableListView.OnChildClickListener, ExpandableListView.OnItemLongClickListener {
 
     @BindView(R.id.con_listView)
     ExpandableListView listView;
     private FriendsAdapter adapter;
+    private PopShare mPopShare;
     private LocationBroadcastReceiver mLocationBroadcastReceiver = new LocationBroadcastReceiver();
 
     @Override
@@ -49,7 +52,6 @@ public class ContantFrag extends BaseFragment implements ExpandableListView.OnCh
         listView.setOnChildClickListener(this);
 
         loadData();
-
     }
 
     private void loadData() {
@@ -71,6 +73,16 @@ public class ContantFrag extends BaseFragment implements ExpandableListView.OnCh
         Intent intent = new Intent(getActivity(), ChatAct.class);
         intent.putExtra(ChatAct.USERNAME, user);
         startActivity(intent);
+        return true;
+    }
+
+
+    @Override
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+        if (mPopShare == null) {
+            mPopShare = new PopShare(mContext, view);
+        }
+        mPopShare.show();
         return true;
     }
 

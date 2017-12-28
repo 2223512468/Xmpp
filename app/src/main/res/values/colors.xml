@@ -11,5 +11,7 @@
     <color name="orange_user">#F02800</color>
     <color name="text_black_light">#9c9c9c</color>
     <color name="theme_bg">#F5F5F9</color>
+    <color name="div_color">#DADADA</color>
+    <color name="half_translate">#e0666666</color>
 
 </resources>

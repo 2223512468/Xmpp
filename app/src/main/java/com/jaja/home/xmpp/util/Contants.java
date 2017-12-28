@@ -5,7 +5,7 @@ package com.jaja.home.xmpp.util;
  */
 public class Contants {
 
-    public static String SERVICE_IP = "192.168.93.108";
+    public static String SERVICE_IP = "192.168.93.51";
     public static int SERVICE_PORT = 5222;
     public static String SIGNATURE = "signature";
     public static String HEADER = "head";

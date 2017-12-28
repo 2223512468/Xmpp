@@ -145,5 +145,13 @@
 
     </declare-styleable>
 
+    <declare-styleable name="MultiRecycleView">
+        <!-- 分割线色 -->
+        <attr name="div_color" format="color" />
+        <attr name="div_margin" format="dimension" />
+        <attr name="is_grid" format="boolean" />
+        <!-- 分割线单位dp-->
+        <attr name="div_height" format="dimension" />
+    </declare-styleable>
 
 </resources>
